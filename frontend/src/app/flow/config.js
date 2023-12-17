@@ -12,8 +12,7 @@ config({
   "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
   // Alias for the Domains Contract
   // UPDATE THIS to be the address of YOUR contract account address
-  "0xDomains": "UPDATE_ME",
+  "0xCollectibles": "0xb54ef3bb122808cb",
   // Testnet aliases for NonFungibleToken and FungibleToken contracts
   "0xNonFungibleToken": "0x631e88ae7f1d7c20",
-  "0xFungibleToken": "0x9a0766d93b6608b7",
 });

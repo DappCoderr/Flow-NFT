@@ -1,0 +1,159 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    column-gap: 2em;
+    align-items: center;
+    background-color: #171923;
+    padding: 1em 0 1em 0;
+    font-size: 16px;
+    border-bottom: 2px solid darkslategray;
+    margin-bottom: 2em;
+}
+
+.navbar a {
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 8px;
+    color: white;
+}
+
+.navbar button {
+    padding: 8px;
+    /* background-color: transparent; */
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: white;
+    font: inherit;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+    border: 2px solid darkslategray;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.main{
+    width: 100vw;
+    /* max-height: 100vh; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    gap: 1em;
+}
+
+.main button{
+    padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main p{
+    color: white;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mark {
+    display: block;
+    margin: 0.5rem 0;
+    color: black;
+    padding: 6px;
+    border-radius: 3px;
+}
+
+.main-image{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.main-image img{
+    width: 200px;
+    height: 200px;
+}
+
+.mutate{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 1.5em;
+    padding: 50px;
+}
+
+.mutate input{
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.query {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 1.5em;
+    border-right: white solid 2px;
+    border-left: white solid 2px;
+    padding: 50px;
+}
+
+.view {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 1.5em;
+    padding: 50px;
+}
+
+.view input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.view button {
+    margin-top: 0.5rem;
+}
+
+.nft-list{
+    display: flex;
+    justify-content: center;
+}
+
+.nft-list img{
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+}
+
+.nft-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: #fff solid 2px;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+.nft-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
