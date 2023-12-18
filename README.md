@@ -1,116 +1,34 @@
-## 👋 Welcome Flow Developer!
-Welcome to your new Flow NFT project. We provided you with an example to get started. The `ExampleNFT` contract is taken from https://github.com/onflow/flow-nft
 
-## 🔨 Getting started
-Getting started can feel overwhelming, but we are here for you. Depending on how accustomed you are to Flow here's a list of resources you might find useful:
-- **[Cadence documentation](https://developers.flow.com/cadence/language)**: here you will find language reference for Cadence, which will be the language in which you develop your smart contracts,
-- **[Visual Studio Code](https://code.visualstudio.com/?wt.mc_id=DX_841432)** and **[Cadence extension](https://marketplace.visualstudio.com/items?itemName=onflow.cadence)**: we suggest using Visual Studio Code IDE for writing Cadence with the Cadence extension installed, that will give you nice syntax highlitning and additional smart features,
-- **[SDKs](https://developers.flow.com/tools#sdks)**: here you will find a list of SDKs you can use to ease the interaction with Flow network (sending transactions, fetching accounts etc),
-- **[Tools](https://developers.flow.com/tools#development-tools)**: development tools you can use to make your development easier, [Flowser](https://docs.flowser.dev/) can be super handy to see what's going on the blockchain while you develop
+## 🚀 Welcome to Flow Collectibles Portal Demo!
+Welcome to the Flow Collectibles Portal project – a comprehensive learning experience centered around blockchain technology. This project is specifically designed to showcase the integration of smart contracts using the Cadence language on the Flow blockchain, coupled with a sleek Next.js frontend. 🌐
 
-NFT Resources:
-- **[flow-nft](https://github.com/onflow/flow-nft)**: home of the Flow NFT standards, contains utility contracts, examples, and documentation,
-- **[nft-storefront](https://github.com/onflow/nft-storefront/)**: NFT Storefront is an open marketplace contract used by most Flow NFT marketplaces,
-- **[Flow NFT Catalog](https://www.flow-nft-catalog.com/)**: list of NFT contracts on Flow, can be a valuable source to compose new projects or use as example,
-
+## 🔐 Getting Started
+To dive into the world of Collectibles Portal, simply log in using your Blocto wallet. From there, you can seamlessly interact with the Flow blockchain, performing mutations and queries with ease. We've even included a helpful project structure to kickstart your journey.
 
 ## 📦 Project Structure
-Your project comes with some standard folders which have a special purpose:
-- `/cadence` inside here is where your Cadence smart contracts code lives
-- `flow.json` configuration file for your project, you can think of it as package.json, but you don't need to worry, flow dev command will configure it for you
+Your journey begins with an organized project structure, each component serving a unique purpose:
 
-Inside `cadence` folder you will find:
-- `/contracts` location for Cadence contracts go in this folder
-- `/scripts` location for Cadence scripts goes here
-- `/transactions` location for Cadence transactions goes in this folder
+Cadence: This directory houses your Cadence smart contract code.
+- `/contracts`: Smart contract files reside here.
+- `/scripts`: Cadence scripts find their home in this directory.
+- `/transactions`: For your Cadence transactions, look no further than this folder.
 
+Frontend: Explore the frontend directory to find everything related to the user interface.
+- `/src/app`: The heart of the frontend, where the app logic resides.
+- `/src/app/page.css`: Style your app with this dedicated folder.
+- `src/app/flow`: Configuration files for Flow can be found here.
+- `flow.json`: This configuration file streamlines your project setup – think of it as your project's package.json, but worry not, the flow dev command will handle the details for you.
 
-## 👨‍💻 Start Developing
-After creating this project using the flow setup command you should then start the emulator by running:
-```
-> flow emulator --contracts
-```
-_we use `--contracts` flag to include more already deployed contract we can then easily import in our project._
+## 🏎️ Project Output
+Get ready for an immersive experience with Collectibles Portal! Witness the magic unfold through the following key components:
 
-and then start the development command by running:
-```shell
-> flow dev
-```
-After the command is started it will automatically watch any changes you make to Cadence files and make sure to continiously sync those changes on the emulator network. If you make any mistakes it will report the errors as well. Read more [about the command here](https://developers.flow.com/tools/flow-cli/super-commands)
+### Home Page: Your gateway to the Collectibles Portal ecosystem.
+<img width="1440" alt="image" src="https://github.com/DappCoderr/Flow-NFT/assets/68939930/2752d3ae-4a23-4aaf-acb3-c60b4b3a630a">
 
-## 🏎️ Interacting with ExampleNFT
-
-### Initializing an Account
-
-First, we need to create a new test account for the emulator. Let's call it `user1`:
-
-```
-flow accounts create
-```
-
-Initialize the `user1` account:
-
-```
-flow transactions send \
-  cadence/transactions/init.cdc \
-  --signer user1
-```
-
-`user1` Account can now store and receive `ExampleNFT`.
-
-### Minting
-
-With `user1` account initialized to receive `ExampleNFT`, we can now mint into the `user1` account. The minting transaction should be signed by the account that's storing the `ExampleNFT` contract (admin). We need to pass the recipient account's address to the mint transaction. You can grab it from the initialization step above, or `flow.json`.
-
-```
-flow transactions send \
-  cadence/transactions/mint.cdc \
-  0xUser1Address \
-  --signer exampleNFT
-```
-
-### Get NFTs in Account
-
-Fetch the `id`s of `ExampleNFT` NFTs stored in a given account:
-
-```
-flow scripts execute \
-  cadence/scripts/get_nft_ids.cdc \
-  0xUser1Address
-```
-
-### Get NFT Metadata
-
-Fetch metadata for given `ExampleNFT` id in an account:
-
-```
-flow scripts execute \
-  cadence/scripts/get_nft_metadata.cdc \
-  0xUser1Address \
-  nft_id
-```
-
-### Tranferring NFT to Another Account
-
-Create and initialize another account and call it `user2`:
-
-```
-flow accounts create
-flow transactions send cadence/transactions/init.cdc --signer user2
-```
-
-Transfer `ExampleNFT` with given `nft_id` to `user2`:
-
-```
-flow transactions send \
-  cadence/transactions/transfer.cdc \
-  0xUser2Address \
-  nft_id \
-  --signer user1
-```
+### Final Output after Minting: Visualize the end result of the minting process.
+<img width="1440" alt="image" src="https://github.com/DappCoderr/Flow-NFT/assets/68939930/24d2ea3d-1475-47ac-80bc-47fd0266d35a">
 
 ## Further Reading
-
 - Cadence Language Reference https://developers.flow.com/cadence/language
 - Flow Smart Contract Project Development Standards https://developers.flow.com/cadence/style-guide/project-development-tips
 - Cadence anti-patterns https://developers.flow.com/cadence/anti-patterns
