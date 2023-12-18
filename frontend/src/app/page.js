@@ -1,34 +1,46 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
-import * as fcl from "@onflow/fcl";
-import "./page.css";
-import "./flow/config";
-import { mintNFT } from "./transaction/mint.txn";
-import { checkCollection } from "./script/checkCollection.script";
-import { getNFTId } from "./script/getID.script";
-import { getNFT } from "./script/getNFT.script";
+import * as fcl from '@onflow/fcl';
+import './page.css';
+import './flow/config';
+import { mintNFT } from './transaction/mint.txn';
+import { checkCollection } from './script/checkCollection.script';
+import { getNFTId } from './script/getID.script';
+import { getNFT } from './script/getNFT.script';
 
+// Component definition
 export default function Home() {
+  // Refs
   const urlInputRef = useRef();
   const nameInputRef = useRef();
   const idInputRef = useRef();
 
-  const [currentUser, setUser] = useState({
+  // State variables
+  const [currentUser, setCurrentUser] = useState({
     loggedIn: false,
     addr: undefined,
   });
-
   const [isInitialized, setIsInitialized] = useState();
   const [collectiblesList, setCollectiblesList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [ids, setIds] = useState([]);
   const [nft, setNFT] = useState({});
 
+  // Constants
+  const TEST_COLLECTIBLES = [
+    // 'https://apod.nasa.gov/apod/image/2305/M27_Cosgrove_2717.jpg',
+    // 'https://apod.nasa.gov/apod/image/2305/SeaBlueSky_Horalek_960.jpg',
+    // 'https://apod.nasa.gov/apod/image/2305/virgoCL2048.jpg',
+    // 'https://apod.nasa.gov/apod/image/1601/2013US10_151221_1200Chambo.jpg'
+  ];
+
+  // Effects
   useEffect(() => {
-      checkCollectionInit();
-      viewNFT()
+    checkCollectionInit();
+    viewNFT();
   }, [currentUser]);
 
-  useEffect(() => fcl.currentUser.subscribe(setUser), []);
+  useEffect(() => fcl.currentUser.subscribe(setCurrentUser), []);
 
   useEffect(() => {
     if (currentUser.loggedIn) {
@@ -37,30 +49,16 @@ export default function Home() {
     }
   }, [currentUser]);
 
-  const saveCollectible = async () => {
-    if (urlInputRef.current.value.length > 0 && nameInputRef.current.value.length > 0) {
-      console.log('Collectibles name:', nameInputRef.current.value);
-      console.log('Collectibles url:', urlInputRef.current.value);
-      const transaction = mintNFT(nameInputRef.current.value, urlInputRef.current.value);
-      console.log('transactionID:', transaction);
-    } else {
-      console.log('Empty input. Try again.');
-    }
-  };
+  // Functions
 
-  const TEST_COLLECTIBLES = [
-    // 'https://apod.nasa.gov/apod/image/2305/M27_Cosgrove_2717.jpg',
-    // 'https://apod.nasa.gov/apod/image/2305/SeaBlueSky_Horalek_960.jpg',
-    // 'https://apod.nasa.gov/apod/image/2305/virgoCL2048.jpg',
-    // 'https://apod.nasa.gov/apod/image/1601/2013US10_151221_1200Chambo.jpg'
-  ];
-
+  // Function to initialize collection status
   async function checkCollectionInit() {
     const isInit = await checkCollection(currentUser?.addr);
     console.log(isInit);
     setIsInitialized(isInit);
   }
 
+  // Function to view NFTs
   async function viewNFT() {
     console.log(idInputRef.current);
     const nfts = await getNFT(currentUser?.addr, idInputRef.current);
@@ -68,12 +66,14 @@ export default function Home() {
     setNFT(nfts);
   }
 
+  // Function to view NFT IDs
   async function viewIds() {
     const ids = await getNFTId(currentUser?.addr);
     console.log(ids);
     setIds(ids);
   }
 
+  // Function to handle input change for NFT ID
   function handleInputChange(event) {
     const inputValue = event.target.value;
 
@@ -84,8 +84,28 @@ export default function Home() {
     }
   }
 
+  // Function to save a collectible
+  const saveCollectible = async () => {
+    if (urlInputRef.current.value.length > 0 && nameInputRef.current.value.length > 0) {
+      try {
+        setLoading(true);
+        const transaction = await mintNFT(nameInputRef.current.value, urlInputRef.current.value);
+        console.log('transactionID:', transaction);
+        // Handle minting success (if needed)
+      } catch (error) {
+        console.error('Minting failed:', error);
+        // Handle minting failure (if needed)
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      console.log('Empty input. Try again.');
+    }
+  };
+
+  // JSX
   return (
-    <div>
+        <div>
       <div className="navbar">
         <h1>Flow Collectibles Portal</h1>
         <span>Address: {currentUser?.addr ?? "NO Address"}</span>
