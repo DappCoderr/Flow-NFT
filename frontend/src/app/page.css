@@ -45,6 +45,12 @@
     gap: 1em;
 }
 
+.main-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .main button {
     padding: 8px;
     font-size: 12px;
