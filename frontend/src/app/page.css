@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-.main{
+.main {
     width: 100vw;
     /* max-height: 100vh; */
     height: 100vh;
@@ -45,14 +45,14 @@
     gap: 1em;
 }
 
-.main button{
+.main button {
     padding: 8px;
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.main p{
+.main p {
     color: white;
     font-size: 16px;
 }
@@ -71,18 +71,18 @@ mark {
     border-radius: 3px;
 }
 
-.main-image{
+.main-image {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
 }
 
-.main-image img{
+.main-image img {
     width: 200px;
     height: 200px;
 }
 
-.mutate{
+.mutate {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -91,7 +91,7 @@ mark {
     padding: 50px;
 }
 
-.mutate input{
+.mutate input {
     margin-bottom: 1rem;
     padding: 0.5rem;
     border: 1px solid #fff;
@@ -129,12 +129,12 @@ mark {
     margin-top: 0.5rem;
 }
 
-.nft-list{
+.nft-list {
     display: flex;
     justify-content: center;
 }
 
-.nft-list img{
+.nft-list img {
     display: flex;
     justify-content: space-around;
     width: 100px;
@@ -156,4 +156,3 @@ mark {
     border-radius: 8px;
     margin-top: 1rem;
 }
-
