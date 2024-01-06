@@ -1,0 +1,25 @@
+{
+  "contracts": {
+    "Collectibles": "./cadence/contracts/Collectibles.cdc",
+    "NonFungibleToken": {
+      "source": "./cadence/contracts/NonFungibleToken.cdc",
+      "aliases": {
+        "testnet": "0x631e88ae7f1d7c20"
+      }
+    }
+  },
+  "networks": {
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "testnet-account": {
+      "address": "ADDRESS FROM FAUCET",
+      "key": "YOUR PRIVATE KEY"
+    }
+  },
+  "deployments": {
+    "testnet": {
+      "testnet-account": ["Collectibles"]
+    }
+  }
+}
