@@ -1,0 +1,31 @@
+{
+  "contracts": {
+    "Collectibles": "./cadence/contracts/Collectibles.cdc",
+    "NonFungibleToken": {
+      "source": "./cadence/contracts/NonFungibleToken.cdc",
+      "aliases": {
+        "emulator": "0xf8d6e0586b0a20c7",
+        "testnet": "0x631e88ae7f1d7c20"
+      }
+    }
+  },
+  "networks": {
+    "emulator": "127.0.0.1:3569",
+    "testnet": "access.devnet.nodes.onflow.org:9000"
+  },
+  "accounts": {
+    "emulator-account": {
+      "address": "0xf8d6e0586b0a20c7",
+      "key": "2619878f0e2ff438d17835c2a4561cb87b4d24d72d12ec34569acd0dd4af7c21"
+    },
+    "testnet-account": {
+      "address": "0xb54ef3bb122808cb",
+      "key": "PRIVATE_KEY"
+    }
+  },
+  "deployments": {
+    "testnet": {
+      "testnet-account": ["Collectibles"]
+    }
+  }
+}

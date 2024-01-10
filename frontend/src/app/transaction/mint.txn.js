@@ -34,5 +34,4 @@ transaction(name:String, image:String){
         self.receiverCollectionRef.deposit(token: <-nft)
     }
 }
-
 `

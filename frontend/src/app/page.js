@@ -55,7 +55,7 @@ export default function Home() {
   async function checkCollectionInit() {
     const isInit = await checkCollection(currentUser?.addr);
     console.log(isInit);
-    setIsInitialized(isInit);
+    setIsInitialized(isInit);a
   }
 
   // Function to view NFTs
@@ -85,7 +85,7 @@ export default function Home() {
   }
 
   // Function to save a collectible
-  const saveCollectible = async () => {
+  async function mint() {
     if (urlInputRef.current.value.length > 0 && nameInputRef.current.value.length > 0) {
       try {
         setLoading(true);
@@ -119,7 +119,7 @@ export default function Home() {
             <h1>Mutate Flow Blockchain</h1>
             <form onSubmit={(event) => {
               event.preventDefault();
-              saveCollectible();
+              mint();
             }}>
               <input type="text" placeholder='enter name of the NFT' ref={nameInputRef}/>
               <input type="text" placeholder='enter a url' ref={urlInputRef}/>
